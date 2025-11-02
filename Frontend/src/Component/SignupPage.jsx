@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./Signup.css";
-
+import API_URL from "../API";
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function Signup() {
     setSuccess("");
     console.log(name, email, password);
     try {
-      const response = await fetch("http://localhost:3002/signup", {
+       const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
