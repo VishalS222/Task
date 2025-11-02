@@ -8,7 +8,11 @@ const Port = process.env.PORT || 5000;
 const URI = process.env.MONGO_URL;
 const cors = require("cors");
 const bodyParser = require("body-parser");
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173"], // Change later to Vercel URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 
 const userSchema = new mongoose.Schema({
