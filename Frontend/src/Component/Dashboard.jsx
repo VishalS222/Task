@@ -1,7 +1,7 @@
 // Dashboard.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import API_URL from "../API";
 function Dashboard() {
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);
@@ -24,7 +24,7 @@ function Dashboard() {
 
   async function fetchCurrentUser() {
     try {
-      const res = await fetch("http://localhost:3002/me", {
+     const res = await fetch(`${API_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ function Dashboard() {
   async function fetchUsers() {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:3002/users", {
+     const res = await fetch(`${API_URL}/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) {
@@ -85,7 +85,7 @@ function Dashboard() {
         setError("Name and email cannot be empty");
         return;
       }
-      const res = await fetch(`http://localhost:3002/users/${id}`, {
+     const res = await fetch(`${API_URL}/users/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -113,7 +113,7 @@ function Dashboard() {
     );
     if (!confirmed) return;
     try {
-      const res = await fetch(`http://localhost:3002/users/${id}`, {
+      const res = await fetch(`${API_URL}/users/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
