@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../API";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ function LoginPage() {
     };
 
     try {
-      const response = await fetch("http://localhost:3002/login", {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
