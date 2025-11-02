@@ -145,16 +145,7 @@ app.get("/users", verifyToken, async (req, res) => {
   }
 });
 
-// Get all users (exclude password)
-app.get("/users", verifyToken, async (req, res) => {
-  try {
-    const users = await User.find().select("-password").sort({ name: 1 });
-    res.json({ users });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
-  }
-});
+
 
 // Update user (only name & email) - no password updates here
 app.put("/users/:id", verifyToken, async (req, res) => {
