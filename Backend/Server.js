@@ -9,7 +9,7 @@ const URI = process.env.MONGO_URL;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 app.use(cors({
-  origin: ["http://localhost:5173"], // Change later to Vercel URL
+  origin: ["https://task-bb49.vercel.app"], // Change later to Vercel URL
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
